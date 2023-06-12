@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.AccessControl;
+using System.Xml.Linq;
 using static keywords.DELEGATE;
 
 namespace keywords
@@ -26,7 +28,7 @@ namespace keywords
             // The body of animalSound() is defined and provided this derived class
             Console.WriteLine("The pig says: wee wee");
         }
-    }
+    }       
 
 
     public static class AS
@@ -89,7 +91,7 @@ namespace keywords
                 }
                 Console.WriteLine(i);
             }
-            Console.WriteLine(); 
+            Console.WriteLine();
         }
     }
     static class CONTINUE
@@ -162,6 +164,7 @@ namespace keywords
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                //throw;
             }
             Console.WriteLine();
         }
@@ -252,7 +255,7 @@ namespace keywords
     {
         public static void DOUBLEExplain()
         {
-            Console.WriteLine("17  DOUBLE");
+            Console.WriteLine("17)  DOUBLE");
             double myNum = 19.99D;
             Console.WriteLine(myNum + "\n");
         }
@@ -261,7 +264,7 @@ namespace keywords
     {
         public static void CONDITIONALExplain()
         {
-            Console.WriteLine("18  CONDITIONAL");
+            Console.WriteLine("18)  CONDITIONAL");
             int x = 10;
 
             if (x > 5)
@@ -289,6 +292,153 @@ namespace keywords
         Friday,
         Saturday,
         Sunday
+    }
+    static class IN
+    {
+        public static void INExplain()
+        {
+            Console.WriteLine("20) IN");
+            int[] numbers = { 1, 2, 3, 4, 5 };
+            foreach (int num in numbers)
+            {
+                Console.WriteLine(num + "\n");
+            }
+        }
+    }
+    internal class INTERNAL
+    {
+        public static void INTERNALExplain()
+        {
+            Console.WriteLine("21) INTERNAL");
+            Console.WriteLine("hello world" + "\n");
+        }
+    }
+    /* static class OUT
+     {
+         public static void OUTExplain(out string firstname, out string lastname)
+         {
+             Console.WriteLine("22) OUT");
+             firstname = "ajay";
+             lastname = "krishna";
+             Console.WriteLine(firstname + " " + lastname);
+         }
+     }*/
+    static class REF
+    {
+        public static void REFExplain(ref string firstname, ref string lastname)
+        {
+            Console.WriteLine("23) REF");
+            Console.WriteLine(firstname + " " + lastname + "\n");
+        }
+    }
+    static class RETURN
+    {
+        public static int RETURNExplain(int a, int b)
+        {
+            Console.WriteLine("24) RETURN");
+            int c = a + b;
+            return c;
+        }
+    }
+    public class READONLY
+    {
+        private readonly double radius;
+        public READONLY(double radius)
+        {
+            Console.WriteLine("25  READONLY");
+            this.radius = radius;
+            Console.WriteLine(radius + "\n");
+        }
+
+    }
+    class PROTECTED
+    {
+        public void PROTECTEDExplain()
+        {
+            Console.WriteLine("c#" + "\n");
+        }
+
+
+    }
+    class PROTECTED1 : PROTECTED
+    {
+        public void PROTECTED1Explain()
+        {
+            Console.WriteLine("26  PROTECTED");
+            Console.Write("iam learning ");
+
+        }
+    }
+    /*static class GOTO
+    {
+        public static void GOTOExplain()
+        {
+            Console.WriteLine("27)  GOTO");
+        statement1:
+            Console.WriteLine("You are not eligible to vote!");
+        statement2:
+            Console.WriteLine("You are eligible to vote!");
+            int age = Convert.ToInt32(Console.ReadLine()); ;
+            if (age < 18)
+            {
+                goto statement1;
+            }
+            else
+            {
+                goto statement2;
+            }
+        }
+    }*/
+    sealed class SEALED
+    {
+        public static void SEALEDExplain()
+        {
+            Console.WriteLine("28)  SEALED");
+            Console.WriteLine("c#" + "\n");
+
+        }
+    }
+    static class TYPEOF
+    {
+        public static void TYPEOFExplain()
+        {
+            Console.WriteLine("29)  TYPEOF");
+            string name = "Mahesh Chand";
+            object Type = name.GetType();
+            Console.WriteLine(Type + "\n");
+        }
+    }
+    public interface IINTERFACEExplain
+    {
+        void draw();
+    }
+    public class INTERFACE : IINTERFACEExplain
+    {
+        public void draw()
+        {
+            Console.WriteLine("30)  INTERFACE");
+            Console.WriteLine("learning  interface" + "\n");
+        }
+    }
+    struct Books
+    {
+        public string title;
+        public string author;
+        public string subject;
+        public int book_id;
+
+    }
+    class PARAMS
+    {
+        public static void PARAMSExplain(params int[] val)
+        {
+            Console.WriteLine("32)  PARAMS");
+            for (int i = 0; i < val.Length; i++)
+            {
+                Console.WriteLine(val[i]);
+            }
+            Console.WriteLine();
+        }   
     }
 
     class main
@@ -322,8 +472,45 @@ namespace keywords
             DOUBLE.DOUBLEExplain();
             CONDITIONAL.CONDITIONALExplain();
             DaysOfWeek today = DaysOfWeek.Monday;
+            IN.INExplain();
+            INTERNAL.INTERNALExplain();
 
-                
+            string firstname = "seran";
+            string lastname = "sengut";
+            //OUT.OUTExplain(out firstname, out lastname);
+            REF.REFExplain(ref firstname, ref lastname);
+
+            int c = RETURN.RETURNExplain(10, 20);
+            Console.WriteLine(c + "\n");
+
+            READONLY OBJ = new READONLY(4.0);
+            PROTECTED1 oops = new PROTECTED1();
+            oops.PROTECTED1Explain();
+            oops.PROTECTEDExplain();    
+
+            //GOTO.GOTOExplain();
+            SEALED.SEALEDExplain();
+            TYPEOF.TYPEOFExplain();
+
+            INTERFACE iNTERFACE = new INTERFACE();
+            iNTERFACE.draw();
+
+            Books Book1;
+            Book1.title = "C Programming";
+            Book1.author = "Nuha Ali";
+            Book1.subject = "C Programming Tutorial";
+            Book1.book_id = 6495407;
+            Console.WriteLine("31) STRUCT");
+            Console.WriteLine("title  :" + Book1.title);
+            Console.WriteLine("author :" + Book1.author + "\n");
+
+            PARAMS.PARAMSExplain(2, 4, 6, 8, 10, 12, 14);
+
+
+
+
+
+
         }
     }
 }
